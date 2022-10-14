@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
     private int gep;
     private int te;
     private AlertDialog.Builder ad;
+    private ImageView gHp1, gHp2, gHp3;
+    private ImageView[] gHpTomb;
+    private ImageView eHp1, eHp2, eHp3;
+    private ImageView[] eHpTomb;
+    private int gMaxHp;
+    private int eMaxHp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +52,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
+                    eletCsokkent("ember");
                     gep++;
                     gepScore.setText("Computer: "+ gep+" ");
                 }else if(gepValasztas == 3){
                     Toast.makeText(MainActivity.this, "Nyertél", Toast.LENGTH_SHORT).show();
+                    eletCsokkent("gep");
                     te++;
                     emberScore.setText("Ember: "+ te+" ");
                 }
@@ -69,12 +77,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if(gepValasztas == 1){
                     Toast.makeText(MainActivity.this, "Nyertél", Toast.LENGTH_SHORT).show();
+                    eletCsokkent("gep");
                     te++;
                     emberScore.setText("Ember: "+ te+" ");
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
                 }else if(gepValasztas == 3){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
+                    eletCsokkent("ember");
                     gep++;
                     gepScore.setText("Computer: "+ gep+" ");
                 }
@@ -94,10 +104,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if(gepValasztas == 1){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
+                    eletCsokkent("ember");
                     gep++;
                     gepScore.setText("Computer: "+ gep+" ");
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Nyertél", Toast.LENGTH_SHORT).show();
+                    eletCsokkent("gep");
                     te++;
                     emberScore.setText("Ember: "+ te+" ");
                 }else if(gepValasztas == 3){
@@ -167,16 +179,44 @@ public class MainActivity extends AppCompatActivity {
             ad.setPositiveButton("Igen", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    emberScore.setText("Ember: 0");
-                    gepScore.setText("Computer: 0");
+                    emberScore.setText("Ember: 0"+ " ");
+                    gepScore.setText("Computer: 0"+ " ");
                     koKep.setImageResource(R.drawable.rock);
                     gepKoKep.setImageResource(R.drawable.rock);
                     gepValasztas = 0;
                     gep = 0;
                     te = 0;
+                    eMaxHp = 3;
+                    gMaxHp = 3;
+                    gHp1.setImageResource(R.drawable.heart2);
+                    gHp2.setImageResource(R.drawable.heart2);
+                    gHp3.setImageResource(R.drawable.heart2);
+                    eHp1.setImageResource(R.drawable.heart2);
+                    eHp2.setImageResource(R.drawable.heart2);
+                    eHp3.setImageResource(R.drawable.heart2);
+
+                    gHpTomb = new ImageView[] {gHp1, gHp2, gHp3};
+                    eHpTomb = new ImageView[] {eHp1, eHp2, eHp3};
                 }
             });
             ad.create().show();
+        }
+
+    }
+
+    private void eletCsokkent(String ki){
+        if(ki == "ember"){
+            if (eMaxHp > 0)
+            {
+                eMaxHp--;
+                eHpTomb[eMaxHp].setImageResource(R.drawable.heart1);
+            }
+        }else if (ki == "gep"){
+            if (gMaxHp > 0)
+            {
+                gMaxHp--;
+                gHpTomb[gMaxHp].setImageResource(R.drawable.heart1);
+            }
         }
 
     }
@@ -195,5 +235,18 @@ public class MainActivity extends AppCompatActivity {
         te = 0;
 
         ad = new AlertDialog.Builder(MainActivity.this);
+
+        gHp1 = findViewById(R.id.gHp1);
+        gHp2 = findViewById(R.id.gHp2);
+        gHp3 = findViewById(R.id.gHp3);
+        gHpTomb = new ImageView[] {gHp1, gHp2, gHp3};
+
+        eHp1 = findViewById(R.id.eHp1);
+        eHp2 = findViewById(R.id.eHp2);
+        eHp3 = findViewById(R.id.eHp3);
+        eHpTomb = new ImageView[] {eHp1, eHp2, eHp3};
+
+        eMaxHp = 3;
+        gMaxHp = 3;
     }
 }
