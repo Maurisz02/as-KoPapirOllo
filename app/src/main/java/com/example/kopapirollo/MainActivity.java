@@ -16,7 +16,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView koKep, gepKoKep;
-    private Button  koBtn, papirBtn, olloBtn;
+    private ImageView  koBtn, papirBtn, olloBtn;
     private TextView emberScore, gepScore;
     private int gepValasztas;
     private Random rnd;
