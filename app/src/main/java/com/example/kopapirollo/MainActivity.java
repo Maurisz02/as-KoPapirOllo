@@ -38,19 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                rnd = new Random();
-
-                gepValasztas = rnd.nextInt(3)+1;
-                switch (gepValasztas){
-                    case 1:
-                        gepKoKep.setImageResource(R.drawable.rock);
-                        break;
-                    case 2:
-                        gepKoKep.setImageResource(R.drawable.paper);
-                        break;
-                    case 3:
-                        gepKoKep.setImageResource(R.drawable.scissors);
-                }
+                setGepKep();
 
                 koKep.setImageResource(R.drawable.rock);
 
@@ -59,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
                     gep++;
-                    gepScore.setText("Computer: "+ gep);
+                    gepScore.setText("Computer: "+ gep+" ");
                 }else if(gepValasztas == 3){
                     Toast.makeText(MainActivity.this, "Nyertél", Toast.LENGTH_SHORT).show();
                     te++;
-                    emberScore.setText("Ember: "+ te);
+                    emberScore.setText("Ember: "+ te+" ");
                 }
 
                 vege();
@@ -75,32 +63,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                rnd = new Random();
-
-                gepValasztas = rnd.nextInt(3)+1;
-                switch (gepValasztas){
-                    case 1:
-                        gepKoKep.setImageResource(R.drawable.rock);
-                        break;
-                    case 2:
-                        gepKoKep.setImageResource(R.drawable.paper);
-                        break;
-                    case 3:
-                        gepKoKep.setImageResource(R.drawable.scissors);
-                }
+                setGepKep();
 
                 koKep.setImageResource(R.drawable.paper);
 
                 if(gepValasztas == 1){
                     Toast.makeText(MainActivity.this, "Nyertél", Toast.LENGTH_SHORT).show();
                     te++;
-                    emberScore.setText("Ember: "+ te);
+                    emberScore.setText("Ember: "+ te+" ");
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
                 }else if(gepValasztas == 3){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
                     gep++;
-                    gepScore.setText("Computer: "+ gep);
+                    gepScore.setText("Computer: "+ gep+" ");
                 }
 
                 vege();
@@ -112,30 +88,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                rnd = new Random();
-
-                gepValasztas = rnd.nextInt(3)+1;
-                switch (gepValasztas){
-                    case 1:
-                        gepKoKep.setImageResource(R.drawable.rock);
-                        break;
-                    case 2:
-                        gepKoKep.setImageResource(R.drawable.paper);
-                        break;
-                    case 3:
-                        gepKoKep.setImageResource(R.drawable.scissors);
-                }
+               setGepKep();
 
                 koKep.setImageResource(R.drawable.scissors);
 
                 if(gepValasztas == 1){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
                     gep++;
-                    gepScore.setText("Computer: "+ gep);
+                    gepScore.setText("Computer: "+ gep+" ");
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Nyertél", Toast.LENGTH_SHORT).show();
                     te++;
-                    emberScore.setText("Ember: "+ te);
+                    emberScore.setText("Ember: "+ te+" ");
                 }else if(gepValasztas == 3){
                     Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
                 }
@@ -145,6 +109,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setGepKep(){
+        rnd = new Random();
+
+        gepValasztas = rnd.nextInt(3)+1;
+        switch (gepValasztas){
+            case 1:
+                gepKoKep.setImageResource(R.drawable.rock);
+                break;
+            case 2:
+                gepKoKep.setImageResource(R.drawable.paper);
+                break;
+            case 3:
+                gepKoKep.setImageResource(R.drawable.scissors);
+        }
     }
 
     private void vege(){
