@@ -17,11 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView koKep, gepKoKep;
     private ImageView  koBtn, papirBtn, olloBtn;
-    private TextView emberScore, gepScore;
+    private TextView emberScore, gepScore, dontetlen;
     private int gepValasztas;
     private Random rnd;
     private int gep;
     private int te;
+    private int dontetlenekSzama;
     private AlertDialog.Builder ad;
     private ImageView gHp1, gHp2, gHp3;
     private ImageView[] gHpTomb;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if(gepValasztas == 1){
                     Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
+                    dontetlenekSzama++;
+                    dontetlen.setText("Döntetlenek száma: "+ dontetlenekSzama);
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
                     eletCsokkent("ember");
@@ -82,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     emberScore.setText("Ember: "+ te+" ");
                 }else if(gepValasztas == 2){
                     Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
+                    dontetlenekSzama++;
+                    dontetlen.setText("Döntetlenek száma: "+ dontetlenekSzama);
                 }else if(gepValasztas == 3){
                     Toast.makeText(MainActivity.this, "Vesztettél", Toast.LENGTH_SHORT).show();
                     eletCsokkent("ember");
@@ -114,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                     emberScore.setText("Ember: "+ te+" ");
                 }else if(gepValasztas == 3){
                     Toast.makeText(MainActivity.this, "Döntetlen", Toast.LENGTH_SHORT).show();
+                    dontetlenekSzama++;
+                    dontetlen.setText("Döntetlenek száma: "+ dontetlenekSzama);
                 }
 
                 vege();
@@ -181,11 +188,13 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     emberScore.setText("Ember: 0"+ " ");
                     gepScore.setText("Computer: 0"+ " ");
+                    dontetlen.setText("Döntetlenek száma: 0");
                     koKep.setImageResource(R.drawable.rock);
                     gepKoKep.setImageResource(R.drawable.rock);
                     gepValasztas = 0;
                     gep = 0;
                     te = 0;
+                    dontetlenekSzama = 0;
                     eMaxHp = 3;
                     gMaxHp = 3;
                     gHp1.setImageResource(R.drawable.heart2);
@@ -229,8 +238,10 @@ public class MainActivity extends AppCompatActivity {
         olloBtn = findViewById(R.id.olloBtn);
         emberScore = findViewById(R.id.emberScore);
         gepScore = findViewById(R.id.gepScore);
+        dontetlen = findViewById(R.id.dontetlen);
 
         gepValasztas = 0;
+        dontetlenekSzama = 0;
         gep = 0;
         te = 0;
 

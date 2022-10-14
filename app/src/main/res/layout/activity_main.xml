@@ -98,6 +98,15 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/dontetlen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Döntetlenek száma: 0"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
         <ImageView
             android:id="@+id/koKep"
             android:layout_width="120dp"
